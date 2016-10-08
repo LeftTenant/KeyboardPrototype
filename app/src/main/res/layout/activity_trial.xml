@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.challenge.keyboardprototype.TrialActivity">
+
+    <TextView
+            android:id="@+id/activity_trial_target_word"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/trial_target_word_label"/>
+
+    <ListView
+            android:id="@+id/activity_trial_suggestions"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/activity_trial_autocomplete_container">
+    </ListView>
+
+    <LinearLayout
+            android:id="@+id/activity_trial_autocomplete_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/activity_trial_keyboard_container"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+        <EditText
+                android:id="@+id/activity_trial_autocomplete_word"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:focusable="false"
+                tools:ignore="LabelFor,TextFields"/>
+
+        <Button style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/activity_trial_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:minHeight="48dp"
+                android:text="@string/trial_accept_button"/>
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/activity_trial_keyboard_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+</RelativeLayout>

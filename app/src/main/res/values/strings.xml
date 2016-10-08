@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Keyboard Prototype</string>
+    <string name="main_participant_label">Participant ID</string>
+    <string name="main_participant_hint">A Participant ID is required to start</string>
+    <string name="main_menu_save_trial_data">Save Trial Data</string>
+    <string name="main_menu_clear_trial_data">Clear Trial Data</string>
+    <string name="main_start_trials_button">Start Trials</string>
+    <string name="title_activity_trial">Trial</string>
+    <string name="trial_target_word_label">target</string>
+    <string name="trial_accept_button">Enter</string>
+
+    <string name="trial_no_word_found">No word found</string>
+    <string name="main_data_cleared_toast">All trial data cleared.</string>
+    <string name="main_no_external_storage_toast">No storage available.</string>
+    <string name="main_save_failed">Failed to save data.</string>
+</resources>
