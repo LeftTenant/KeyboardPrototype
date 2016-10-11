@@ -28,7 +28,7 @@ public class KeyboardApp extends Application {
 
         m_instance = this;
 
-        getDatabase().loadDictionary();
+        getDatabase();
 
         Log.i(TAG, "Done initializing!");
     }

@@ -85,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (KeyboardApp.getDatabase().getWordCount() == 0) {
+            DatabaseLoaderTask loaderTask = new DatabaseLoaderTask(this);
+            loaderTask.execute();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.main_menu_save_data:
@@ -150,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
                 "target_word",
                 "entered_word",
                 "entry_method",
-                "start",
-                "end",
+                "trial_start",
+                "trial_end",
                 "duration_ms",
         });
     }

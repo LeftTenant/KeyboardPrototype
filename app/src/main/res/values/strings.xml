@@ -13,4 +13,7 @@
     <string name="main_data_cleared_toast">All trial data cleared.</string>
     <string name="main_no_external_storage_toast">No storage available.</string>
     <string name="main_save_failed">Failed to save data.</string>
+    <string name="database_loader_progress_title">Loading Dictionary</string>
+    <string name="database_loader_loading_message">Please wait while the set of trial words is loaded.</string>
+    <string name="database_loader_loaded_message">All words loaded.</string>
 </resources>

@@ -192,6 +192,13 @@ public class Database {
 
     // Dictionary
 
+    public void insertWord(String word, int frequency) {
+        ContentValues values = new ContentValues(2);
+        values.put("word", word);
+        values.put("frequency", frequency);
+        m_db.insertWithOnConflict("dictionary", null, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
     public String getRandomWord() {
         Cursor cursor = m_db.query("dictionary", new String[] { "word" },
                 null, null, null, null, "RANDOM()", "1");
@@ -201,7 +208,7 @@ public class Database {
         return word;
     }
 
-    private int getWordCount() {
+    public int getWordCount() {
         Cursor cursor = m_db.rawQuery("SELECT COUNT(*) FROM dictionary", null);
         int count = cursor.moveToFirst() ? cursor.getInt(0) : 0;
         cursor.close();
@@ -237,48 +244,5 @@ public class Database {
         }
         cursor.close();
         return words;
-    }
-
-    public void loadDictionary() {
-        doInTransaction(new Runnable() {
-            @Override
-            public void run() {
-                int numWords = getWordCount();
-                if (numWords > 0) {
-                    Log.i(TAG, "Load dictionary skipped: " + numWords + " words already loaded.");
-                    return;
-                }
-
-                BufferedReader reader = null;
-                try {
-                    reader = new BufferedReader(
-                            new InputStreamReader(m_context.getAssets().open("dictionary.csv")));
-
-                    // Read each line of the source word data and write it to the dictionary table.
-                    String line;
-                    ContentValues values = new ContentValues(2);
-                    while ((line = reader.readLine()) != null) {
-                        String[] tokens = line.split(",");
-                        int frequency = Integer.valueOf(tokens[1]);
-                        values.put("word", tokens[0].toLowerCase());
-                        values.put("frequency", frequency);
-                        m_db.insert("dictionary", null, values);
-                        ++numWords;
-                    }
-                    Log.i(TAG, "Inserted " + numWords + " words into dictionary.");
-                } catch (IOException e) {
-                    throw new IllegalStateException("Unable to read dictionary file from assets.", e);
-                } finally {
-                    if (reader != null) {
-                        try {
-                            reader.close();
-                        } catch (IOException e) {
-                            Log.e(TAG, "Unable to close dictionary file from assets.", e);
-                        }
-                    }
-
-                }
-            }
-        });
     }
 }
