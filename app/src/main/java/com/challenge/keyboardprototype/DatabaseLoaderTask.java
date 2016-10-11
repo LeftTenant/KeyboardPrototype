@@ -73,12 +73,14 @@ public class DatabaseLoaderTask extends AsyncTask<Void, Integer, Void> {
         m_progressDialog.setMessage(m_context.getString(R.string.database_loader_loading_message));
         m_progressDialog.setIndeterminate(true);
         m_progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        m_progressDialog.setButton(ProgressDialog.BUTTON_NEUTRAL, "Dismiss", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        m_progressDialog.setButton(ProgressDialog.BUTTON_NEUTRAL,
+                m_context.getString(R.string.database_loader_done_button),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
         m_progressDialog.setCancelable(false);
         m_progressDialog.show();

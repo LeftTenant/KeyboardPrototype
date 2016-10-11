@@ -16,4 +16,7 @@
     <string name="database_loader_progress_title">Loading Dictionary</string>
     <string name="database_loader_loading_message">Please wait while the set of trial words is loaded.</string>
     <string name="database_loader_loaded_message">All words loaded.</string>
+    <string name="database_loader_done_button">Dismiss</string>
+    <string name="main_save_data_permission_denied">Permission denied.</string>
+    <string name="main_save_data_complete_prefix">"Saved to "</string>
 </resources>

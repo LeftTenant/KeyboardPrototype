@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            Toast toast = Toast.makeText(this, "Saved to " + outputFile.getName(), Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, getString(R.string.main_save_data_complete_prefix) + outputFile.getName(), Toast.LENGTH_LONG);
             toast.show();
         } catch (IOException e) {
             Log.e(TAG, "Failed to save trial data.", e);
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 saveTrialDataSelected();
             } else {
-                Toast toast = Toast.makeText(this, "Permission denied.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, R.string.main_save_data_permission_denied, Toast.LENGTH_SHORT);
                 toast.show();
             }
         } else {
